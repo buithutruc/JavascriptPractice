@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="/calculator/calculator.css" />
+  </head>
+  <body>
+    <p>Enter two numbers:</p>
+    <input type="text" id="num1-el" class="number_input" />
+    <input type="text" id="num2-el" class="number_input" />
+    <br />
+    <button onclick="add()">Add</button>
+    <button onclick="substract()">Subtract</button>
+    <button onclick="divide()">Divide</button>
+    <button onclick="multiply()">Multiply</button>
+    <button class="clear_btn" onclick="clearAll()">Clear</button>
+    <br />
+    Result: <span id="result-el"></span>
+
+    <script src="/calculator/calculator.js"></script>
+  </body>
+</html>
