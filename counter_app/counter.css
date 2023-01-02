@@ -18,7 +18,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-button {
+.btn {
   border: none;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -30,10 +30,11 @@ button {
   cursor: pointer;
 }
 
-#increment_btn {
+.increment,
+.decrement {
   background: darkred;
 }
 
-#save_btn {
+.save {
   background: darkgreen;
 }

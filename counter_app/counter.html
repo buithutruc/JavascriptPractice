@@ -10,7 +10,21 @@
   <body>
     <h1>People entered:</h1>
     <h2 id="count_sum">0</h2>
-    <button id="increment_btn" onclick="increment()">INCREMENT</button>
+    <div>
+      <button id="increment_btn" class="btn increment" onclick="increment()">
+        INCREASE
+      </button>
+      <button id="decrement_btn" class="btn decrement" onclick="decrement()">
+        DECREASE
+      </button>
+    </div>
+    <div>
+      <button id="save_btn" class="btn save" onclick="save()">SAVE</button>
+      <p >Previous entries:<span id="save_el"></span></p>
+    </div>
+    <p>Total number of people: <span id="total_el"></span></p>
+  </div>
+
     <script src="counter.js"></script>
   </body>
 </html>
