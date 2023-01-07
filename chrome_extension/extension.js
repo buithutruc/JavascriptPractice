@@ -16,11 +16,16 @@ inputEl.addEventListener("keypress", function (event) {
   }
 });
 
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+
 //this is the original code from instructor
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
   //clear out the input field
   inputEl.value = "";
+
+  //save the myLeads array to localStorage
+  localStorage.setItem("myLeads", JSON.stringify(myLeads));
   renderLeads();
 });
 
