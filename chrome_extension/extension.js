@@ -17,6 +17,8 @@ inputEl.addEventListener("keypress", function (event) {
 //this is the original code from instructor
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
+  //clear out the input field
+  inputEl.value = "";
   renderLeads();
 });
 
@@ -30,7 +32,19 @@ function renderLeads() {
     //   li.textContent = myLeads[i];
     //   ulEl.append(li);
 
-    listItems += "<li>" + myLeads[i] + "</li>";
+    //make the link clickable and open in a new tab
+    // listItems +=
+    //   "<li><a target='_blank' href='" +
+    //   myLeads[i] +
+    //   "'>" +
+    //   myLeads[i] +
+    //   "</a></li>";
+
+    //template strings
+    listItems += `
+      <li>
+        <a target='_blank' href='${myLeads[i]}'> ${myLeads[i]} </a>
+      </li>`;
   }
 
   ulEl.innerHTML = listItems;
