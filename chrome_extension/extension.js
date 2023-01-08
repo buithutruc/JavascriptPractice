@@ -3,6 +3,7 @@
 let myLeads = [];
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
+const deleteBtn = document.getElementById("delete-btn");
 const ulEl = document.getElementById("ul-el");
 
 /**
@@ -16,7 +17,7 @@ inputEl.addEventListener("keypress", function (event) {
   }
 });
 
-let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage;
@@ -59,4 +60,24 @@ function renderLeads() {
   }
 
   ulEl.innerHTML = listItems;
+}
+
+//original instruction
+// deleteBtn.addEventListener("dblclick", function () {
+//   localStorage.clear();
+//   myLeads = [];
+//   renderLeads();
+// });
+
+/**
+ * the original code required double click to delete all
+ * changed to ask for user's confirmation before deleting all
+ */
+function deleteAll() {
+  let result = confirm("Are you sure to delete all?");
+  if (result) {
+    localStorage.clear();
+    myLeads = [];
+    renderLeads();
+  }
 }
