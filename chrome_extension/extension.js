@@ -18,7 +18,11 @@ inputEl.addEventListener("keypress", function (event) {
 
 let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
-//this is the original code from instructor
+if (leadsFromLocalStorage) {
+  myLeads = leadsFromLocalStorage;
+  renderLeads();
+}
+
 inputBtn.addEventListener("click", function () {
   myLeads.push(inputEl.value);
   //clear out the input field
