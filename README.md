@@ -8,11 +8,11 @@ Practices #1 to #5: followed instructions of Per Harald Borgen at https://youtu.
 5. Render images: a simple JS method to render images instead of hard-coding in HTML
 
 Learning path after this instruction: 
-  build more projects
-  basic JavaScript FTW
-  ES6 and beyond
-  APIs & async JavaScript
-  Server-side JavaScript
+  a. build more projects
+  b. basic JavaScript FTW
+  c. ES6 and beyond
+  d. APIs & async JavaScript
+  e. Server-side JavaScript
 
 
 
