@@ -3,8 +3,12 @@
 let myLeads = [];
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
-const deleteBtn = document.getElementById("delete-btn");
+const tabBtn = document.getElementById("tab-btn");
 const ulEl = document.getElementById("ul-el");
+const deleteBtn = document.getElementById("delete-btn");
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+
+const tabs = [{ url: "www.google.com" }];
 
 /**
  * added the keypress event which triggers click event when the user presses "Enter" key
@@ -17,21 +21,29 @@ inputEl.addEventListener("keypress", function (event) {
   }
 });
 
-const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
-
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage;
   renderLeads(myLeads);
 }
 
 inputBtn.addEventListener("click", function () {
-  myLeads.push(inputEl.value);
-  //clear out the input field
-  inputEl.value = "";
+  if (inputEl.value != "") {
+    myLeads.push(inputEl.value);
+    //clear out the input field
+    inputEl.value = "";
 
-  //save the myLeads array to localStorage
-  localStorage.setItem("myLeads", JSON.stringify(myLeads));
-  renderLeads(myLeads);
+    //save the myLeads array to localStorage
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    renderLeads(myLeads);
+  }
+});
+
+tabBtn.addEventListener("click", function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    myLeads.push(tabs[0].url);
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    renderLeads(myLeads);
+  });
 });
 
 function renderLeads(myLeads) {
@@ -63,11 +75,12 @@ function renderLeads(myLeads) {
 }
 
 //original instruction
-// deleteBtn.addEventListener("dblclick", function () {
-//   localStorage.clear();
-//   myLeads = [];
-//   renderLeads();
-// });
+deleteBtn.addEventListener("dblclick", function () {
+  console.log("delete button is double clicked!");
+  localStorage.clear();
+  myLeads = [];
+  renderLeads(myLeads);
+});
 
 /**
  * the original code required double click to delete all
