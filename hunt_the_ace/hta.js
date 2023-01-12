@@ -78,6 +78,8 @@ function createCard(cardItem) {
 
   //add inner card element as child element to card element
   addChildElement(cardElem, cardInnerElem);
+
+  //add card element as child element
 }
 
 function createElement(elemType) {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change mode according to time</title>
+    <style>
+      :root {
+        --light-bg-color: gold;
+        --light-tx-color: blue;
+        --dark-bg-color: #222;
+        --dark-tx-color: white;
+      }
+
+      body {
+        height: 100%;
+        text-align: center;
+      }
+
+      html {
+        background: var(--light-bg-color);
+      }
+
+      html[data-theme="darktheme"] {
+        background: var(--dark-bg-color);
+        color: var(--dark-tx-color);
+      }
+
+      .h2-class-container {
+        text-transform: lowercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2 id="h2-container" class="h2-class-container">
+        DARK OR LIGHT MODE IS CHANGED AUTOMATICALLY ACCORDING TO TIME OF THE DAY
+      </h2>
+
+      <p class="h2-class-container">Something here</p>
+    </div>
+    <script>
+      var hour = new Date().getHours();
+
+      //night time
+      if (hour >= 16) {
+        document.documentElement.setAttribute("data-theme", "darktheme");
+      } else document.documentElement.setAttribute("data-theme", "lighttheme");
+
+      console.log(hour);
+    </script>
+  </body>
+</html>
