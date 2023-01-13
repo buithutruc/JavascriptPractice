@@ -1,11 +1,11 @@
 const cardObjectDefinitions = [
-  { id: 1, imagePath: "/images/card-KingHearts.png" },
-  { id: 2, imagePath: "/images/card-JackClubs.png" },
-  { id: 3, imagePath: "/images/card-QueenDiamonds.png" },
-  { id: 4, imagePath: "/images/card-AceSpades.png" },
+  { id: 1, imagePath: "/hunt_the_ace/images/card-KingHearts.png" },
+  { id: 2, imagePath: "/hunt_the_ace/images/card-JackClubs.png" },
+  { id: 3, imagePath: "/hunt_the_ace/images/card-QueenDiamonds.png" },
+  { id: 4, imagePath: "/hunt_the_ace/images/card-AceSpades.png" },
 ];
 
-const cardBackImgPath = "/images/card-back-blue.png";
+const cardBackImgPath = "/hunt_the_ace/images/card-back-blue.png";
 
 const cardContainerElem = document.querySelector(".card-container");
 
