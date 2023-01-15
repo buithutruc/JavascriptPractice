@@ -2,9 +2,11 @@ let playGame;
 let playerChoice;
 let playerWinsCounter = 0;
 let computerWinsCounter = 0;
+let tieGamesCounter = 0;
 
 let playerWinsCounterEl = document.getElementById("player-wins-count");
 let computerWinsCounterEl = document.getElementById("computer-wins-count");
+let tieGamesCounterEl = document.getElementById("tie-games-count");
 
 function init() {
   playGame = confirm("Shall we play rock, paper, or scissors?");
@@ -56,6 +58,7 @@ function play() {
 
     if (player === computer) {
       alert("Tie game!");
+      tieGamesCounter++;
     } else if (player === "rock" && computer === "paper") {
       computerWinsCounter++;
       alert(computerWinStatement);
@@ -71,7 +74,14 @@ function play() {
     }
 
     console.log(
-      "computer: " + computerWinsCounter + "\n" + "player: " + playerWinsCounter
+      "computer: " +
+        computerWinsCounter +
+        "\n" +
+        "player: " +
+        playerWinsCounter +
+        "\n" +
+        "tie games: " +
+        tieGamesCounter
     );
 
     //location.reload()
@@ -87,8 +97,17 @@ function playAgain() {
 }
 
 function seeResult() {
-  playerWinsCounterEl.textContent =
-    "Player wins: " + playerWinsCounter + " times";
-  computerWinsCounterEl.textContent =
-    "Computer wins: " + computerWinsCounter + " times";
+  if (
+    playerWinsCounter === 0 &&
+    computerWinsCounter === 0 &&
+    tieGamesCounter === 0
+  ) {
+    alert("There's no result available.");
+  } else {
+    playerWinsCounterEl.textContent =
+      "Player wins: " + playerWinsCounter + " times";
+    computerWinsCounterEl.textContent =
+      "Computer wins: " + computerWinsCounter + " times";
+    tieGamesCounterEl.textContent = "Tie games: " + tieGamesCounter + " times";
+  }
 }
