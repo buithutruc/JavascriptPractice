@@ -1,55 +1,62 @@
 let playGame;
+let playerChoice;
+
 function init() {
   playGame = confirm("Shall we play rock, paper, or scissors?");
   if (playGame) {
     //play
-    startGame();
+    start();
   } else {
     alert("Ok, maybe next time.");
   }
 }
 
-function startGame() {
-  let playerChoice = prompt("Please enter rock, paper, or scissors.");
-  if (playerChoice) {
-    //continue to play
-    let player = playerChoice.trim().toLowerCase();
-    if (player === "rock" || player === "paper" || player === "scissors") {
-      let computerChoice = Math.floor(Math.random() * 3 + 1);
-      let computer =
-        computerChoice === 1
-          ? "rock"
-          : computerChoice === 2
-          ? "paper"
-          : "scissors";
+function start() {
+  playerChoice = prompt("Please enter rock, paper, or scissors.");
+  if (playerChoice === "") {
+    alert("You didn't enter anything!");
+  } else if (playerChoice) {
+    play();
+  } else {
+    alert("I guess you changed your mind. Maybe next time.");
+  }
+}
 
-      const computerWinStatement = `Player: ${player}\nComputer: ${computer}\nComputer wins!`;
+function play() {
+  let player = playerChoice.trim().toLowerCase();
+  if (player === "rock" || player === "paper" || player === "scissors") {
+    let computerChoice = Math.floor(Math.random() * 3 + 1);
+    let computer =
+      computerChoice === 1
+        ? "rock"
+        : computerChoice === 2
+        ? "paper"
+        : "scissors";
 
-      const playerWinStatement = `Player: ${player}\nComputer: ${computer}\nPlayer wins!`;
+    const computerWinStatement = `Player: ${player}\nComputer: ${computer}\nComputer wins!`;
 
-      let result =
-        player === computer
-          ? "Tie game!"
-          : player === "rock" && computer === "paper"
-          ? computerWinStatement
-          : player === "paper" && computer === "scissors"
-          ? computerWinStatement
-          : player === "scissors" && computer === "rock"
-          ? computerWinStatement
-          : playerWinStatement;
-      alert(result);
+    const playerWinStatement = `Player: ${player}\nComputer: ${computer}\nPlayer wins!`;
 
-      // let playAgain = confirm("Play Again?");
-      // playAgain ? location.reload() : alert("Ok, thanks for playing.");
+    let result =
+      player === computer
+        ? "Tie game!"
+        : player === "rock" && computer === "paper"
+        ? computerWinStatement
+        : player === "paper" && computer === "scissors"
+        ? computerWinStatement
+        : player === "scissors" && computer === "rock"
+        ? computerWinStatement
+        : playerWinStatement;
+    alert(result);
 
-      playAgain();
-    }
+    //location.reload()
+    playAgain();
   } else {
     alert("You didn't enter rock, paper, or scissors.");
   }
 }
 
 function playAgain() {
-  let playAgain = confirm("Play Again?");
-  playAgain ? startGame() : alert("Ok, see you next time.");
+  let playAgain = confirm("Play again?");
+  playAgain ? start() : alert("Ok, see you next time.");
 }
