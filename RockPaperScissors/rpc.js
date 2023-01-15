@@ -1,5 +1,10 @@
 let playGame;
 let playerChoice;
+let playerWinsCounter = 0;
+let computerWinsCounter = 0;
+
+let playerWinsCounterEl = document.getElementById("player-wins-count");
+let computerWinsCounterEl = document.getElementById("computer-wins-count");
 
 function init() {
   playGame = confirm("Shall we play rock, paper, or scissors?");
@@ -37,17 +42,37 @@ function play() {
 
     const playerWinStatement = `Player: ${player}\nComputer: ${computer}\nPlayer wins!`;
 
-    let result =
-      player === computer
-        ? "Tie game!"
-        : player === "rock" && computer === "paper"
-        ? computerWinStatement
-        : player === "paper" && computer === "scissors"
-        ? computerWinStatement
-        : player === "scissors" && computer === "rock"
-        ? computerWinStatement
-        : playerWinStatement;
-    alert(result);
+    // let result =
+    //   player === computer
+    //     ? "Tie game!"
+    //     : player === "rock" && computer === "paper"
+    //     ? computerWinStatement
+    //     : player === "paper" && computer === "scissors"
+    //     ? computerWinStatement
+    //     : player === "scissors" && computer === "rock"
+    //     ? computerWinStatement
+    //     : playerWinStatement;
+    // alert(result);
+
+    if (player === computer) {
+      alert("Tie game!");
+    } else if (player === "rock" && computer === "paper") {
+      computerWinsCounter++;
+      alert(computerWinStatement);
+    } else if (player === "paper" && computer === "scissors") {
+      computerWinsCounter++;
+      alert(computerWinStatement);
+    } else if (player === "scissors" && computer === "rock") {
+      computerWinsCounter++;
+      alert(computerWinStatement);
+    } else {
+      playerWinsCounter++;
+      alert(playerWinStatement);
+    }
+
+    console.log(
+      "computer: " + computerWinsCounter + "\n" + "player: " + playerWinsCounter
+    );
 
     //location.reload()
     playAgain();
@@ -59,4 +84,11 @@ function play() {
 function playAgain() {
   let playAgain = confirm("Play again?");
   playAgain ? start() : alert("Ok, see you next time.");
+}
+
+function seeResult() {
+  playerWinsCounterEl.textContent =
+    "Player wins: " + playerWinsCounter + " times";
+  computerWinsCounterEl.textContent =
+    "Computer wins: " + computerWinsCounter + " times";
 }

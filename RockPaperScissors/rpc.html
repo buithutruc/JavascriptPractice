@@ -11,20 +11,33 @@
         color: goldenrod;
       }
       button {
-        width: 10vw;
+        width: 20vw;
         height: 5vh;
+        min-height: 2rem;
         border: none;
         background-color: goldenrod;
         color: whitesmoke;
         font-weight: 700;
         cursor: pointer;
       }
+
+      .result-container {
+        color: darkcyan;
+      }
+
+      .result {
+        margin: 0.75rem;
+      }
     </style>
   </head>
   <body>
     <h1>Rock, Paper, or Scissors game</h1>
     <button onclick="init()">START</button>
-    <div class="result-container"></div>
+    <button onclick="seeResult()">SEE RESULT</button>
+    <div class="result-container">
+      <p class="result" id="player-wins-count"></p>
+      <p class="result" id="computer-wins-count"></p>
+    </div>
     <script src="rpc.js"></script>
   </body>
 </html>
