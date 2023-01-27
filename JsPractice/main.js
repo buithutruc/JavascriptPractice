@@ -16,3 +16,67 @@ console.log(sameViews);
 
 const divs = view1.querySelectorAll("div");
 console.log(divs);
+
+const sameDivs = view1.getElementsByTagName("div");
+console.log(sameDivs);
+
+const evenDivs = view1.querySelectorAll("div:nth-of-type(2n)");
+console.log(evenDivs);
+
+for (let i = 0; i < evenDivs.length; i++) {
+  evenDivs[i].style.backgroundColor = "gold";
+  //   evenDivs[i].style.width = "200px";
+  //   evenDivs[i].style.height = "200px";
+}
+
+const navText = document.querySelector("nav h1");
+console.log(navText);
+navText.textContent = "Hello World";
+
+const navBar = document.querySelector("nav");
+navBar.innerHTML = `<h1>Hello!</h1><p>This should align right</p> `;
+console.log(navBar);
+navBar.style.justifyContent = "space-between";
+
+console.log(evenDivs[0]);
+console.log(evenDivs[0].parentElement);
+console.log(evenDivs[0].parentElement.children); //children are actual elements
+console.log(evenDivs[0].parentElement.childNodes); //childNodes aren't just elements, they're elements + text nodes + white space nodes + others
+console.log(evenDivs[0].parentElement.hasChildNodes);
+console.log(evenDivs[0].parentElement.lastChild);
+console.log(evenDivs[0].parentElement.lastElementChild);
+console.log(evenDivs[0].parentElement.firstChild);
+console.log(evenDivs[0].parentElement.firstElementChild);
+
+console.log(evenDivs[0].nextSibling);
+console.log(evenDivs[0].nextElementSibling);
+console.log(evenDivs[0].previousSibling);
+console.log(evenDivs[0].previousElementSibling);
+
+view2.style.flexDirection = "row";
+view2.style.flexWrap = "wrap";
+view2.style.margin = "10px";
+
+//remove all children (all nodes, not just elements) inside the view2
+while (view2.lastChild) {
+  view2.lastChild.remove();
+}
+
+const createDivs = (parent, iter) => {
+  const newDiv = document.createElement("div");
+  newDiv.textContent = iter;
+  newDiv.style.backgroundColor = "gold";
+  newDiv.style.color = "darkblue";
+  newDiv.style.width = "100px";
+  newDiv.style.height = "100px";
+  newDiv.style.margin = "10px";
+  newDiv.style.display = "flex";
+  newDiv.style.justifyContent = "center";
+  newDiv.style.alignItems = "center";
+  parent.append(newDiv);
+};
+
+// createDivs(view2, 10);
+for (let i = 1; i <= 12; i++) {
+  createDivs(view2, i);
+}
