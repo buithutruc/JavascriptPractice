@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practicing JavaScript</title>
-    <style>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- <style>
       * {
         margin: 0;
         padding: 0;
@@ -84,7 +86,7 @@
         background-color: darkblue;
         color: #fff;
       }
-    </style>
+    </style> -->
     <script defer src="main.js"></script>
   </head>
   <body>
@@ -92,7 +94,7 @@
       <h1>My Page</h1>
     </nav>
     <main>
-      <section id="view1" class="view view1">
+      <section id="view1" class="view1">
         <div>1</div>
         <div>2</div>
         <div>3</div>
@@ -106,8 +108,17 @@
         <div>11</div>
         <div>12</div>
       </section>
-      <section id="view2" class="view view2">
-        <h2>My 2nd View</h2>
+      <section id="view2" class="view2 darkblue">
+        <div class="black">
+          <h2>My 2nd View</h2>
+        </div>
+      </section>
+      <section id="view3" class="view3">
+        <form id="myForm">
+          <label for="myTextInput">Text Input:</label>
+          <input type="text" id="myTextInput" autocomplete="off" />
+          <button type="submit">Submit</button>
+        </form>
       </section>
     </main>
   </body>

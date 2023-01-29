@@ -1,82 +1,73 @@
-//DOM - Document Object Model
-const view1 = document.getElementById("view1");
-console.log(view1);
+//JavaScript Event Listeners
 
-const view2 = document.querySelector("#view2");
-console.log(view2);
+//Syntax: addEventListener(event, function, useCapture)
 
-view1.style.display = "none";
-view2.style.display = "flex";
+// const doSomething = () => {
+//   alert("doing something");
+// };
 
-const views = document.getElementsByClassName("view");
-console.log(views);
+// h2.addEventListener("click", doSomething, false);
+// h2.removeEventListener("click", doSomething, false);
 
-const sameViews = document.querySelectorAll(".view");
-console.log(sameViews);
+// h2.addEventListener("click", function (event) {
+//   console.log(event.target);
+//   event.target.textContent = "Clicked";
+// });
 
-const divs = view1.querySelectorAll("div");
-console.log(divs);
+//readystatechange event
+document.addEventListener("readystatechange", (event) => {
+  if (event.target.readyState === "complete") {
+    console.log("readyState: complete");
+    initApp();
+  }
+});
 
-const sameDivs = view1.getElementsByTagName("div");
-console.log(sameDivs);
+//events can bubble up or outward
+const initApp = () => {
+  const view = document.querySelector("#view2");
+  const div = view.querySelector("div");
+  const h2 = div.querySelector("h2");
 
-const evenDivs = view1.querySelectorAll("div:nth-of-type(2n)");
-console.log(evenDivs);
+  const view3 = document.querySelector("#view3");
+  const myForm = view3.querySelector("#myForm");
 
-for (let i = 0; i < evenDivs.length; i++) {
-  evenDivs[i].style.backgroundColor = "gold";
-  //   evenDivs[i].style.width = "200px";
-  //   evenDivs[i].style.height = "200px";
-}
+  myForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.log("submit event");
+  });
 
-const navText = document.querySelector("nav h1");
-console.log(navText);
-navText.textContent = "Hello World";
+  view.addEventListener(
+    "click",
+    (event) => {
+      view.classList.toggle("purple");
+      view.classList.toggle("darkblue");
+    },
+    false
+  );
 
-const navBar = document.querySelector("nav");
-navBar.innerHTML = `<h1>Hello!</h1><p>This should align right</p> `;
-console.log(navBar);
-navBar.style.justifyContent = "space-between";
+  div.addEventListener("click", (event) => {
+    // event.stopPropagation();
+    // div.style.backgroundColor = "blue";
+    div.classList.toggle("blue");
+    div.classList.toggle("black");
+  });
 
-console.log(evenDivs[0]);
-console.log(evenDivs[0].parentElement);
-console.log(evenDivs[0].parentElement.children); //children are actual elements
-console.log(evenDivs[0].parentElement.childNodes); //childNodes aren't just elements, they're elements + text nodes + white space nodes + others
-console.log(evenDivs[0].parentElement.hasChildNodes);
-console.log(evenDivs[0].parentElement.lastChild);
-console.log(evenDivs[0].parentElement.lastElementChild);
-console.log(evenDivs[0].parentElement.firstChild);
-console.log(evenDivs[0].parentElement.firstElementChild);
+  h2.addEventListener(
+    "click",
+    (event) => {
+      const myText = event.target.textContent;
+      myText === "My 2nd View"
+        ? (event.target.textContent = "Clicked")
+        : (event.target.textContent = "My 2nd View");
+    },
+    false
+  );
 
-console.log(evenDivs[0].nextSibling);
-console.log(evenDivs[0].nextElementSibling);
-console.log(evenDivs[0].previousSibling);
-console.log(evenDivs[0].previousElementSibling);
-
-view2.style.flexDirection = "row";
-view2.style.flexWrap = "wrap";
-view2.style.margin = "10px";
-
-//remove all children (all nodes, not just elements) inside the view2
-while (view2.lastChild) {
-  view2.lastChild.remove();
-}
-
-const createDivs = (parent, iter) => {
-  const newDiv = document.createElement("div");
-  newDiv.textContent = iter;
-  newDiv.style.backgroundColor = "gold";
-  newDiv.style.color = "darkblue";
-  newDiv.style.width = "100px";
-  newDiv.style.height = "100px";
-  newDiv.style.margin = "10px";
-  newDiv.style.display = "flex";
-  newDiv.style.justifyContent = "center";
-  newDiv.style.alignItems = "center";
-  parent.append(newDiv);
+  const nav = document.querySelector("nav");
+  nav.addEventListener("mouseover", (event) => {
+    event.target.classList.add("height100");
+  });
+  nav.addEventListener("mouseout", (event) => {
+    event.target.classList.remove("height100");
+  });
 };
-
-// createDivs(view2, 10);
-for (let i = 1; i <= 12; i++) {
-  createDivs(view2, i);
-}
