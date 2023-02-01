@@ -1,26 +1,15 @@
-//Web Storage API
-// window.alert("okay");
+//Modules
+//by using modules, strict mode is automatically appied to js
 
-const myArray = ["eat", "sleep", "code"];
+// import playGuitar from "./guitar.js";
+// import { shredding as shred, plucking as fingerpicking } from "./guitar.js";
 
-const myObject = {
-  name: "Truc",
-  hobbies: ["eat", "sleep", "code"],
-  logName: function () {
-    console.log(this.name);
-  },
-};
+import * as Guitars from "./guitar.js";
 
-// myObject.logName();
+// console.log(playGuitar());
+// console.log(shred());
+// console.log(fingerpicking());
 
-sessionStorage.setItem("mySessionStore", JSON.stringify(myArray));
-const mySessionData = JSON.parse(sessionStorage.getItem("mySessionStore"));
-console.log(mySessionData);
-
-localStorage.setItem("myLocalStore", JSON.stringify(myArray));
-// localStorage.removeItem("myLocalStore");
-// localStorage.clear();
-const key = localStorage.key(0);
-const storageLength = localStorage.length;
-const myLocalData = JSON.parse(localStorage.getItem("myLocalStore"));
-console.log(storageLength);
+console.log(Guitars.default());
+console.log(Guitars.shredding());
+console.log(Guitars.plucking());
