@@ -1,20 +1,5 @@
-//Modules
-//by using modules, strict mode is automatically appied to js
+//Higher Order Functions
 
-// import playGuitar from "./guitar.js";
-// import { shredding as shred, plucking as fingerpicking } from "./guitar.js";
-
-import * as Guitars from "./guitar.js";
-import User from "./user.js";
-
-// console.log(playGuitar());
-// console.log(shred());
-// console.log(fingerpicking());
-
-const me = new User("email@email.com", "Truc");
-console.log(me);
-console.log(me.greeting());
-
-console.log(Guitars.default());
-console.log(Guitars.shredding());
-console.log(Guitars.plucking());
+//A higher order function is a function that does at least one of the following:
+//takes one or more functions as an argument (parameter)
+//returns a function as the result
