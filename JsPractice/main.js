@@ -1,33 +1,73 @@
-//Higher Order Functions
+//Fetch API requires a discussion of...
+//Callbacks, Promises, Thenables, and Async/Await
 
-//A higher order function is a function that does at least one of the following:
-//takes one or more functions as an argument (parameter)
-//returns a function as the result
+//Callbacks
 
-//forEach()
+// function firstFunction(parameters, callback) {
+//   //do stuff
+//   callback();
+// }
 
-import { posts } from "./posts.js";
+// //AKA "callback hell"
+// firstFunction(para, function () {
+//   //do stuff
+//   secondFunction(para, function () {
+//     thirdFunction(para, function () {});
+//   });
+// });
 
-posts.forEach((post) => {
-  console.log(post);
+//Promises: 1. replace Callbacks; 2. when requesting data using Fetch API, we have to wait for that data to come back
+//3 states: Pending, Fulfilled, Rejected
+
+const myPromise = new Promise((resolve, reject) => {
+  const error = false;
+  if (!error) {
+    resolve("Yes! resolved the promise!");
+  } else {
+    reject("No! rejected the promise.");
+  }
 });
 
-console.clear();
+// myPromise
+//   .then((value) => {
+//     return value + 1;
+//   })
+//   .then((newValue) => {
+//     console.log(newValue);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
-const filteredPosts = posts.filter((post) => {
-  return post.userId === 1;
-});
+//using timeout
 
-console.log(filteredPosts);
+// const myNextPromise = new Promise((resolve, reject) => {
+//   setTimeout(function () {
+//     resolve("myNextPromise resolved!");
+//   }, 3000);
+// });
 
-const mappedPosts = filteredPosts.map((post) => {
-  return post.id * 10;
-});
+// myNextPromise.then((value) => {
+//   console.log(value);
+// });
 
-console.log(mappedPosts);
+// myPromise.then((value) => {
+//   console.log(value);
+// });
 
-const reducedPostValue = mappedPosts.reduce((sum, post) => {
-  return sum + post;
-});
+const users = fetch("https://jsonplaceholder.typicode.com/users");
 
-console.log(reducedPostValue);
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then((response) => {
+    console.log(response);
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    data.forEach((user) => {
+      console.log(user);
+    });
+  });
+
+//pending
+console.log(users);
