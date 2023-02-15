@@ -9,3 +9,5 @@ const container = document.getElementById("container");
 for (let i = 0; i < imgs.length; i++) {
   container.innerHTML += `<img class="team-img" src="${imgs[i]}" />`;
 }
+$("img").hide(500);
+$("img").show(1500);
