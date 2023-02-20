@@ -1,0 +1,2 @@
+Generate Random Whole Numbers within a Range:
+Math.floor(Math.random() * (max - min + 1)) + min
